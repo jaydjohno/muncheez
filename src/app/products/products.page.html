@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Products
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+	<br>
+	<ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
+	
+	<ion-card *ngFor="let item of getKeys(thumbs)" [routerLink]="'/tabs/product/'+ thumbs.get(item).id">
+		<ion-card-header>
+			<ion-card-title>
+				<ion-icon name="cube-outline"></ion-icon> {{thumbs.get(item).name}}
+			</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			{{thumbs.get(item).stock}} {{thumbs.get(item).variations}}
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-button *ngIf="loaded === true" (click)="next()">More Products</ion-button>
+</ion-content>

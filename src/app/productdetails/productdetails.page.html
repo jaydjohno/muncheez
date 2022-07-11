@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="tabs/products"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<span [innerHTML]="item?.name"></span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<br>
+	<ion-progress-bar *ngIf="searching === true" type="indeterminate"></ion-progress-bar>
+  
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>
+				<span [innerHTML]="item?.name"></span>
+			</ion-card-title>
+		</ion-card-header>    
+		<ion-card-content>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-list>
+				<ion-item>
+					<ion-row>
+						<ion-col col-2>
+							<ion-icon name="fast-food-outline"></ion-icon>
+						</ion-col>
+						<ion-col col-8>
+							Variations
+							<ion-item *ngFor ="let data of item?.attributes" >
+								<span [innerHTML]="data.name"></span> ( <span [innerHTML]="data.options.length"></span> options )
+							</ion-item>	
+						</ion-col>
+						<ion-col col-2>
+						</ion-col>
+					</ion-row>
+				</ion-item>
+				
+				<ion-item>
+					<ion-row>
+						<ion-col col-2>
+							<ion-icon name="folder-open-outline"></ion-icon>
+						</ion-col>
+						<ion-col col-8>
+							Inventory
+						</ion-col>
+						<ion-col col-2>
+						</ion-col>
+					</ion-row>
+				</ion-item>
+				
+				<ion-item>
+					<ion-row>
+						<ion-col col-2>
+							<ion-icon name="checkmark-done-outline"></ion-icon>
+						</ion-col>
+						<ion-col col-8>
+							Categories
+							<ion-item *ngFor ="let data of item?.categories" >
+								<span [innerHTML]="data.name"></span>
+							</ion-item>	
+						</ion-col>
+						<ion-col col-2>
+						</ion-col>
+					</ion-row>
+				</ion-item>
+				
+				<ion-item>
+					<ion-row>
+						<ion-col col-2>
+							<ion-icon name="cube-outline"></ion-icon>
+						</ion-col>
+						<ion-col col-8>
+							Product Type
+						</ion-col>
+						<ion-col col-2>
+							<span [innerHTML]="item?.type"></span> product
+						</ion-col>
+					</ion-row>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

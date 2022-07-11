@@ -1,0 +1,133 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="tabs/orders"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Order #<span [innerHTML]="item?.id"></span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<br>
+	<ion-progress-bar *ngIf="searching === true" type="indeterminate"></ion-progress-bar>
+  
+	<ion-card>
+		<ion-card-header>
+			<span [innerHTML]="item?.date_created"></span> . #<span [innerHTML]="item?.id"></span>
+			<ion-card-title>
+				<span [innerHTML]="item?.billing.first_name"></span> <span [innerHTML]="&nbsp;"></span> <span [innerHTML]="item?.billing.last_name"></span>
+			</ion-card-title>
+		</ion-card-header>    
+		<ion-card-content>
+			Products
+			<ion-list>
+				<ion-item *ngFor ="let data of item?.line_items" >
+					<ion-row>
+						<ion-col col-2>
+							<ion-icon name="checkbox-outline"></ion-icon>
+						</ion-col>
+						<ion-col col-8>
+							<span [innerHTML]="data.name"></span>
+							£<span [innerHTML]="data.total"></span> ( <span [innerHTML]="data.quantity"></span>  x £<span [innerHTML]="data.price"></span> )
+						</ion-col>
+						<ion-col col-2>
+							<span [innerHTML]="data.quantity"></span>
+						</ion-col>
+					</ion-row>
+				</ion-item>
+			</ion-list>
+			<ion-row>
+				<ion-col col-6>
+					<ion-button expand="block" (click) = "accept_order()">Accept Order</ion-button>		
+				</ion-col>
+				<ion-col col-6>
+					<ion-button expand="block" (click) = "decline_order()">Decline Order</ion-button>		
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+			Payment
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-row>
+				<ion-col col-8>
+					Products Total
+				</ion-col>
+				<ion-col col-4>
+					<ion-label ><span [innerHTML]="item?.total"></span></ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col col-8>
+					Shipping
+				</ion-col>
+				<ion-col col-4>
+					<ion-label ><span [innerHTML]="item?.shipping_total"></span></ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col col-8>
+					Discounts
+				</ion-col>
+				<ion-col col-4>
+					<ion-label ><span [innerHTML]="item?.discount_total"></span></ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col col-8>
+					Order Total
+				</ion-col>
+				<ion-col col-4>
+					<ion-label ><span [innerHTML]="item?.total"></span></ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col col-8>
+					Paid By Customer
+					<span [innerHTML]="item?.date_paid"></span> via <span [innerHTML]="item?.payment_method_title"></span>
+				</ion-col>
+				<ion-col col-4>
+					<ion-label ><span [innerHTML]="item?.total"></span></ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+			Customer Information
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-row>
+				<ion-col col-12>
+					Delivery Address
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+			Order Notes
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-list>
+				<ion-item *ngFor ="let data of notes" >
+					<p><span [innerHTML]="data.date_created"></span> ( <span [innerHTML]="data.author"></span> ) </p>
+					<p><span [innerHTML]="data.note"></span></p>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-row>
+		<ion-col col-12>
+			<ion-button expand="block" (click) = "print_order()">Accept Order</ion-button>		
+		</ion-col>
+	</ion-row>
+</ion-content>

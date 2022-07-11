@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>
+			<div [innerHTML]="items?.name"></div>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<br>
+	<ion-progress-bar *ngIf="searching === true" type="indeterminate"></ion-progress-bar>
+	
+	<ion-segment scrollable (ionChange)="segmentChanged($event)" value="today">
+		<ion-segment-button value="today">
+			<ion-label>Today</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="week">
+			<ion-label>This Week</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="month" >
+			<ion-label>This Month</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="year" >
+			<ion-label>This Year</ion-label>
+		</ion-segment-button>
+	</ion-segment>
+  
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>
+			</ion-card-title>
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-row>
+				<ion-col col-4>
+					Total Customers
+					<span [innerHTML]="info?.total_customers"></span>
+				</ion-col>
+				<ion-col col-4>
+					Orders
+					<span [innerHTML]="info?.total_orders"></span>
+				</ion-col>
+				<ion-col col-4>
+					Revenue
+					<span [innerHTML]="info?.total_sales"></span>
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>
+				<ion-label>Top Performers</ion-label>
+				Gain insights into how products are performing on your store.
+			</ion-card-title>
+		</ion-card-header>    
+		<ion-card-content>
+			<ion-row>
+				<ion-col col-6>
+					Product
+				</ion-col>
+				<ion-col col-6>
+					Total Sold
+				</ion-col>
+			</ion-row>
+			<ion-row *ngFor="let item of getKeys( thumbs )">
+				<ion-col col-6>
+					{{thumbs.get(item).name}}
+				</ion-col>
+				<ion-col col-6>
+					{{thumbs.get(item).quantity}}
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+	
+</ion-content>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1033101841474",
+    "firebase_url": "https://muncheez-2582d.firebaseio.com",
+    "project_id": "muncheez-2582d",
+    "storage_bucket": "muncheez-2582d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033101841474:android:207595f5b79a37cc1d89db",
+        "android_client_info": {
+          "package_name": "com.muncheez.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033101841474-dbi8bhg5821tk6ofok5h7sgl5ei3n5or.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvDvbAG7pX18rzeH0AVFnpKzRsgz5rj98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033101841474-dbi8bhg5821tk6ofok5h7sgl5ei3n5or.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

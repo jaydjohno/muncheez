@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>
+			Orders
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+	<br>
+	<ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
+	
+	<ion-segment scrollable (ionChange)="get_orders($event)" value="processing">
+		<ion-segment-button value="processing">
+			Processing
+		</ion-segment-button>
+		<ion-segment-button value="all">
+			All Orders
+		</ion-segment-button>
+	</ion-segment>
+	
+	<ion-card *ngFor="let item of getKeys(thumbs)" [routerLink]="'/tabs/order/'+ thumbs.get(item).id">
+		<ion-card-header>
+			{{thumbs.get(item).date}}
+			<ion-card-title>
+				#{{thumbs.get(item).id}} {{thumbs.get(item).firstname}} {{thumbs.get(item).lastname}}
+			</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<div [innerHTML]="thumbs.get(item).content"></div>
+		</ion-card-content>
+	</ion-card>
+	
+	<ion-button *ngIf="loaded === true" (click)="next()">More Orders</ion-button>
+</ion-content>
